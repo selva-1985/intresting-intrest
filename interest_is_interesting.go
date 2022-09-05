@@ -1,4 +1,6 @@
-package interest
+package main
+
+import "fmt"
 
 // InterestRate returns the interest rate for the provided balance.
 func InterestRate(balance float64) float32 {
@@ -18,4 +20,8 @@ func AnnualBalanceUpdate(balance float64) float64 {
 // YearsBeforeDesiredBalance calculates the minimum number of years required to reach the desired balance.
 func YearsBeforeDesiredBalance(balance, targetBalance float64) int {
 	panic("Please implement the YearsBeforeDesiredBalance function")
+}
+
+func main() {
+	fmt.Println("Please implement intrest functions")
 }
