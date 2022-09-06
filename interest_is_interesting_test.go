@@ -1,4 +1,4 @@
-package interest
+package main
 
 import (
 	"math"
@@ -22,67 +22,67 @@ func TestInterestRate(t *testing.T) {
 		{
 			name:    "Minimal first interest rate",
 			balance: 0,
-			want:    float32(0.5),
+			want:    float32(1.213),
 		},
 		{
 			name:    "Tiny first interest rate",
 			balance: 0.000001,
-			want:    float32(0.5),
+			want:    float32(1.213),
 		},
 		{
 			name:    "Maximum first interest rate",
 			balance: 999.9999,
-			want:    float32(0.5),
+			want:    float32(0.8),
 		},
 		{
 			name:    "Minimal second interest rate",
 			balance: 1000.0,
-			want:    float32(1.621),
+			want:    float32(0.8),
 		},
 		{
 			name:    "Tiny second interest rate",
 			balance: 1000.0001,
-			want:    float32(1.621),
+			want:    float32(0.8),
 		},
 		{
 			name:    "Maximum second interest rate",
 			balance: 4999.9990,
-			want:    float32(1.621),
+			want:    float32(2.0120),
 		},
 		{
 			name:    "Minimal third interest rate",
 			balance: 5000.0000,
-			want:    float32(2.475),
+			want:    float32(3.475),
 		},
 		{
 			name:    "Tiny third interest rate",
 			balance: 5000.0001,
-			want:    float32(2.475),
+			want:    float32(3.475),
 		},
 		{
 			name:    "Large third interest rate",
 			balance: 5639998.742909,
-			want:    float32(2.475),
+			want:    float32(3.475),
 		},
 		{
 			name:    "Rate on minimal negative balance",
 			balance: -0.000001,
-			want:    float32(3.213),
+			want:    float32(1.213),
 		},
 		{
 			name:    "Rate on small negative balance",
 			balance: -0.123,
-			want:    float32(3.213),
+			want:    float32(1.2130),
 		},
 		{
 			name:    "Rate on regular negative balance",
 			balance: -300.0,
-			want:    float32(3.213),
+			want:    float32(1.2130),
 		},
 		{
 			name:    "Rate on large negative balance",
 			balance: -152964.231,
-			want:    float32(3.213),
+			want:    float32(1.2130),
 		},
 	}
 
@@ -110,22 +110,22 @@ func TestInterest(t *testing.T) {
 		{
 			name:    "Interest on negative balance",
 			balance: -10000.0,
-			want:    -321.3,
+			want:    -121.3,
 		},
 		{
 			name:    "Interest on small balance",
 			balance: 555.55,
-			want:    2.77775,
+			want:    4.44444,
 		},
 		{
 			name:    "Interest on medium balance",
 			balance: 4999.99,
-			want:    81.0498379,
+			want:    100.599799,
 		},
 		{
 			name:    "Interest on large balance",
 			balance: 34600.80,
-			want:    856.369767,
+			want:    1202.377800,
 		},
 	}
 
@@ -163,27 +163,27 @@ func TestAnnualBalanceUpdate(t *testing.T) {
 		{
 			name:    "Annual balance update for average positive start balance",
 			balance: 1000.0,
-			want:    1016.210000,
+			want:    1008.000000,
 		},
 		{
 			name:    "Annual balance update for large positive start balance",
 			balance: 1000.0001,
-			want:    1016.210101621,
+			want:    1008.000101,
 		},
 		{
 			name:    "Annual balance update for huge positive start balance",
 			balance: 898124017.826243404425,
-			want:    920352586.410925,
+			want:    929333827.445705,
 		},
 		{
 			name:    "Annual balance update for small negative start balance",
 			balance: -0.123,
-			want:    -0.12695199,
+			want:    -0.124492,
 		},
 		{
 			name:    "Annual balance update for large negative start balance",
 			balance: -152964.231,
-			want:    -157878.971832,
+			want:    -154819.687122,
 		},
 	}
 
@@ -213,25 +213,25 @@ func TestYearsBeforeDesiredBalance(t *testing.T) {
 			name:          "Years before desired balance for small start balance",
 			balance:       100.0,
 			targetBalance: 125.80,
-			want:          47,
+			want:          28,
 		},
 		{
 			name:          "Years before desired balance for average start balance",
 			balance:       1000.0,
 			targetBalance: 1100.0,
-			want:          6,
+			want:          11,
 		},
 		{
 			name:          "Years before desired balance for large start balance",
 			balance:       8080.80,
 			targetBalance: 9090.90,
-			want:          5,
+			want:          3,
 		},
 		{
 			name:          "Years before large difference between start and target balance",
 			balance:       2345.67,
 			targetBalance: 12345.6789,
-			want:          85,
+			want:          69,
 		},
 		{
 			name:          "Balance is already above target",
